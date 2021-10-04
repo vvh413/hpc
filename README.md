@@ -1,2 +1,7 @@
-# hpc
-High-Perfomance Computing
+# High-Perfomance Computing labs
+
+---
+## Практические работы по курсу Высокопроизводительные вычисления
+
+### Список
+ * [Lab #1](lab_01)
