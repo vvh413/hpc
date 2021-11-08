@@ -1,0 +1,14 @@
+module neuron
+(
+	input clk,
+	input real a,
+	input real b,
+	output real ab
+);
+	real array [1:0][1:0];
+	always @(posedge clk)
+	begin
+		array[0][0] = a;
+		ab = a * b;
+	end
+endmodule

@@ -1,0 +1,930 @@
+Analysis & Synthesis report for nn
+Tue Nov  9 00:34:12 2021
+Quartus Prime Version 20.1.0 Build 711 06/05/2020 SJ Lite Edition
+
+
+---------------------
+; Table of Contents ;
+---------------------
+  1. Legal Notice
+  2. Analysis & Synthesis Summary
+  3. Analysis & Synthesis Settings
+  4. Parallel Compilation
+  5. Analysis & Synthesis Source Files Read
+  6. Analysis & Synthesis Resource Usage Summary
+  7. Analysis & Synthesis Resource Utilization by Entity
+  8. Analysis & Synthesis DSP Block Usage Summary
+  9. Registers Removed During Synthesis
+ 10. Removed Registers Triggering Further Register Optimizations
+ 11. General Register Statistics
+ 12. Multiplexer Restructuring Statistics (Restructuring Performed)
+ 13. Parameter Settings for User Entity Instance: Top-level Entity: |nn
+ 14. Parameter Settings for User Entity Instance: layer_z:lz
+ 15. Parameter Settings for User Entity Instance: layer_z:lz|neuron_z:comb_3
+ 16. Parameter Settings for User Entity Instance: layer_z:lz|neuron_z:comb_70
+ 17. Parameter Settings for User Entity Instance: layer_z:lz|neuron_z:comb_137
+ 18. Parameter Settings for User Entity Instance: layer_z:lz|neuron_z:comb_204
+ 19. Parameter Settings for User Entity Instance: argmax:comb_3
+ 20. Port Connectivity Checks: "argmax:comb_3"
+ 21. Port Connectivity Checks: "layer_z:lz|neuron_z:comb_204"
+ 22. Port Connectivity Checks: "layer_z:lz|neuron_z:comb_137"
+ 23. Port Connectivity Checks: "layer_z:lz|neuron_z:comb_70"
+ 24. Port Connectivity Checks: "layer_z:lz|neuron_z:comb_3"
+ 25. Port Connectivity Checks: "layer_z:lz"
+ 26. Post-Synthesis Netlist Statistics for Top Partition
+ 27. Elapsed Time Per Partition
+ 28. Analysis & Synthesis Messages
+ 29. Analysis & Synthesis Suppressed Messages
+
+
+
+----------------
+; Legal Notice ;
+----------------
+Copyright (C) 2020  Intel Corporation. All rights reserved.
+Your use of Intel Corporation's design tools, logic functions 
+and other software and tools, and any partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Intel Program License 
+Subscription Agreement, the Intel Quartus Prime License Agreement,
+the Intel FPGA IP License Agreement, or other applicable license
+agreement, including, without limitation, that your use is for
+the sole purpose of programming logic devices manufactured by
+Intel and sold by Intel or its authorized distributors.  Please
+refer to the applicable agreement for further details, at
+https://fpgasoftware.intel.com/eula.
+
+
+
++-------------------------------------------------------------------------------+
+; Analysis & Synthesis Summary                                                  ;
++---------------------------------+---------------------------------------------+
+; Analysis & Synthesis Status     ; Successful - Tue Nov  9 00:34:12 2021       ;
+; Quartus Prime Version           ; 20.1.0 Build 711 06/05/2020 SJ Lite Edition ;
+; Revision Name                   ; nn                                          ;
+; Top-level Entity Name           ; nn                                          ;
+; Family                          ; Cyclone V                                   ;
+; Logic utilization (in ALMs)     ; N/A                                         ;
+; Total registers                 ; 349                                         ;
+; Total pins                      ; 168                                         ;
+; Total virtual pins              ; 0                                           ;
+; Total block memory bits         ; 0                                           ;
+; Total DSP Blocks                ; 8                                           ;
+; Total HSSI RX PCSs              ; 0                                           ;
+; Total HSSI PMA RX Deserializers ; 0                                           ;
+; Total HSSI TX PCSs              ; 0                                           ;
+; Total HSSI PMA TX Serializers   ; 0                                           ;
+; Total PLLs                      ; 0                                           ;
+; Total DLLs                      ; 0                                           ;
++---------------------------------+---------------------------------------------+
+
+
++---------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Settings                                                                                             ;
++---------------------------------------------------------------------------------+--------------------+--------------------+
+; Option                                                                          ; Setting            ; Default Value      ;
++---------------------------------------------------------------------------------+--------------------+--------------------+
+; Device                                                                          ; 5CSEMA5F31C6       ;                    ;
+; Top-level entity name                                                           ; nn                 ; nn                 ;
+; Family name                                                                     ; Cyclone V          ; Cyclone V          ;
+; Verilog Show LMF Mapping Messages                                               ; Off                ;                    ;
+; Use smart compilation                                                           ; Off                ; Off                ;
+; Enable parallel Assembler and Timing Analyzer during compilation                ; On                 ; On                 ;
+; Enable compact report table                                                     ; Off                ; Off                ;
+; Restructure Multiplexers                                                        ; Auto               ; Auto               ;
+; MLAB Add Timing Constraints For Mixed-Port Feed-Through Mode Setting Don't Care ; Off                ; Off                ;
+; Create Debugging Nodes for IP Cores                                             ; Off                ; Off                ;
+; Preserve fewer node names                                                       ; On                 ; On                 ;
+; Intel FPGA IP Evaluation Mode                                                   ; Enable             ; Enable             ;
+; Verilog Version                                                                 ; Verilog_2001       ; Verilog_2001       ;
+; VHDL Version                                                                    ; VHDL_1993          ; VHDL_1993          ;
+; State Machine Processing                                                        ; Auto               ; Auto               ;
+; Safe State Machine                                                              ; Off                ; Off                ;
+; Extract Verilog State Machines                                                  ; On                 ; On                 ;
+; Extract VHDL State Machines                                                     ; On                 ; On                 ;
+; Ignore Verilog initial constructs                                               ; Off                ; Off                ;
+; Iteration limit for constant Verilog loops                                      ; 5000               ; 5000               ;
+; Iteration limit for non-constant Verilog loops                                  ; 250                ; 250                ;
+; Add Pass-Through Logic to Inferred RAMs                                         ; On                 ; On                 ;
+; Infer RAMs from Raw Logic                                                       ; On                 ; On                 ;
+; Parallel Synthesis                                                              ; On                 ; On                 ;
+; DSP Block Balancing                                                             ; Auto               ; Auto               ;
+; NOT Gate Push-Back                                                              ; On                 ; On                 ;
+; Power-Up Don't Care                                                             ; On                 ; On                 ;
+; Remove Redundant Logic Cells                                                    ; Off                ; Off                ;
+; Remove Duplicate Registers                                                      ; On                 ; On                 ;
+; Ignore CARRY Buffers                                                            ; Off                ; Off                ;
+; Ignore CASCADE Buffers                                                          ; Off                ; Off                ;
+; Ignore GLOBAL Buffers                                                           ; Off                ; Off                ;
+; Ignore ROW GLOBAL Buffers                                                       ; Off                ; Off                ;
+; Ignore LCELL Buffers                                                            ; Off                ; Off                ;
+; Ignore SOFT Buffers                                                             ; On                 ; On                 ;
+; Limit AHDL Integers to 32 Bits                                                  ; Off                ; Off                ;
+; Optimization Technique                                                          ; Balanced           ; Balanced           ;
+; Carry Chain Length                                                              ; 70                 ; 70                 ;
+; Auto Carry Chains                                                               ; On                 ; On                 ;
+; Auto Open-Drain Pins                                                            ; On                 ; On                 ;
+; Perform WYSIWYG Primitive Resynthesis                                           ; Off                ; Off                ;
+; Auto ROM Replacement                                                            ; On                 ; On                 ;
+; Auto RAM Replacement                                                            ; On                 ; On                 ;
+; Auto DSP Block Replacement                                                      ; On                 ; On                 ;
+; Auto Shift Register Replacement                                                 ; Auto               ; Auto               ;
+; Allow Shift Register Merging across Hierarchies                                 ; Auto               ; Auto               ;
+; Auto Clock Enable Replacement                                                   ; On                 ; On                 ;
+; Strict RAM Replacement                                                          ; Off                ; Off                ;
+; Allow Synchronous Control Signals                                               ; On                 ; On                 ;
+; Force Use of Synchronous Clear Signals                                          ; Off                ; Off                ;
+; Auto Resource Sharing                                                           ; Off                ; Off                ;
+; Allow Any RAM Size For Recognition                                              ; Off                ; Off                ;
+; Allow Any ROM Size For Recognition                                              ; Off                ; Off                ;
+; Allow Any Shift Register Size For Recognition                                   ; Off                ; Off                ;
+; Use LogicLock Constraints during Resource Balancing                             ; On                 ; On                 ;
+; Ignore translate_off and synthesis_off directives                               ; Off                ; Off                ;
+; Timing-Driven Synthesis                                                         ; On                 ; On                 ;
+; Report Parameter Settings                                                       ; On                 ; On                 ;
+; Report Source Assignments                                                       ; On                 ; On                 ;
+; Report Connectivity Checks                                                      ; On                 ; On                 ;
+; Ignore Maximum Fan-Out Assignments                                              ; Off                ; Off                ;
+; Synchronization Register Chain Length                                           ; 3                  ; 3                  ;
+; Power Optimization During Synthesis                                             ; Normal compilation ; Normal compilation ;
+; HDL message level                                                               ; Level2             ; Level2             ;
+; Suppress Register Optimization Related Messages                                 ; Off                ; Off                ;
+; Number of Removed Registers Reported in Synthesis Report                        ; 5000               ; 5000               ;
+; Number of Swept Nodes Reported in Synthesis Report                              ; 5000               ; 5000               ;
+; Number of Inverted Registers Reported in Synthesis Report                       ; 100                ; 100                ;
+; Clock MUX Protection                                                            ; On                 ; On                 ;
+; Auto Gated Clock Conversion                                                     ; Off                ; Off                ;
+; Block Design Naming                                                             ; Auto               ; Auto               ;
+; SDC constraint protection                                                       ; Off                ; Off                ;
+; Synthesis Effort                                                                ; Auto               ; Auto               ;
+; Shift Register Replacement - Allow Asynchronous Clear Signal                    ; On                 ; On                 ;
+; Pre-Mapping Resynthesis Optimization                                            ; Off                ; Off                ;
+; Analysis & Synthesis Message Level                                              ; Medium             ; Medium             ;
+; Disable Register Merging Across Hierarchies                                     ; Auto               ; Auto               ;
+; Resource Aware Inference For Block RAM                                          ; On                 ; On                 ;
+; Automatic Parallel Synthesis                                                    ; On                 ; On                 ;
+; Partial Reconfiguration Bitstream ID                                            ; Off                ; Off                ;
++---------------------------------------------------------------------------------+--------------------+--------------------+
+
+
++------------------------------------------+
+; Parallel Compilation                     ;
++----------------------------+-------------+
+; Processors                 ; Number      ;
++----------------------------+-------------+
+; Number detected on machine ; 16          ;
+; Maximum allowed            ; 16          ;
+;                            ;             ;
+; Average used               ; 1.00        ;
+; Maximum used               ; 16          ;
+;                            ;             ;
+; Usage by Processor         ; % Time Used ;
+;     Processor 1            ; 100.0%      ;
+;     Processor 2            ;   0.0%      ;
+;     Processor 3            ;   0.0%      ;
+;     Processor 4            ;   0.0%      ;
+;     Processor 5            ;   0.0%      ;
+;     Processor 6            ;   0.0%      ;
+;     Processor 7            ;   0.0%      ;
+;     Processor 8            ;   0.0%      ;
+;     Processor 9            ;   0.0%      ;
+;     Processor 10           ;   0.0%      ;
+;     Processor 11           ;   0.0%      ;
+;     Processor 12           ;   0.0%      ;
+;     Processor 13           ;   0.0%      ;
+;     Processors 14-16       ;   0.0%      ;
++----------------------------+-------------+
+
+
++-----------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Source Files Read                                                                                      ;
++----------------------------------+-----------------+------------------------+-------------------------------------+---------+
+; File Name with User-Entered Path ; Used in Netlist ; File Type              ; File Name with Absolute Path        ; Library ;
++----------------------------------+-----------------+------------------------+-------------------------------------+---------+
+; nn.v                             ; yes             ; User Verilog HDL File  ; /media/a/hse/soc/hpc/lab_02/nn/nn.v ;         ;
++----------------------------------+-----------------+------------------------+-------------------------------------+---------+
+
+
++---------------------------------------------------------+
+; Analysis & Synthesis Resource Usage Summary             ;
++---------------------------------------------+-----------+
+; Resource                                    ; Usage     ;
++---------------------------------------------+-----------+
+; Estimate of Logic utilization (ALMs needed) ; 209       ;
+;                                             ;           ;
+; Combinational ALUT usage for logic          ; 338       ;
+;     -- 7 input functions                    ; 0         ;
+;     -- 6 input functions                    ; 34        ;
+;     -- 5 input functions                    ; 12        ;
+;     -- 4 input functions                    ; 2         ;
+;     -- <=3 input functions                  ; 290       ;
+;                                             ;           ;
+; Dedicated logic registers                   ; 349       ;
+;                                             ;           ;
+; I/O pins                                    ; 168       ;
+;                                             ;           ;
+; Total DSP Blocks                            ; 8         ;
+;                                             ;           ;
+; Maximum fan-out node                        ; clk~input ;
+; Maximum fan-out                             ; 349       ;
+; Total fan-out                               ; 2668      ;
+; Average fan-out                             ; 2.59      ;
++---------------------------------------------+-----------+
+
+
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                                 ;
++----------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+----------------------------------+-------------+--------------+
+; Compilation Hierarchy Node ; Combinational ALUTs ; Dedicated Logic Registers ; Block Memory Bits ; DSP Blocks ; Pins ; Virtual Pins ; Full Hierarchy Name              ; Entity Name ; Library Name ;
++----------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+----------------------------------+-------------+--------------+
+; |nn                        ; 338 (0)             ; 349 (0)                   ; 0                 ; 8          ; 168  ; 0            ; |nn                              ; nn          ; work         ;
+;    |argmax:comb_3|         ; 117 (117)           ; 54 (54)                   ; 0                 ; 0          ; 0    ; 0            ; |nn|argmax:comb_3                ; argmax      ; work         ;
+;    |layer_z:lz|            ; 221 (36)            ; 295 (0)                   ; 0                 ; 8          ; 0    ; 0            ; |nn|layer_z:lz                   ; layer_z     ; work         ;
+;       |neuron_z:comb_137|  ; 72 (72)             ; 102 (102)                 ; 0                 ; 2          ; 0    ; 0            ; |nn|layer_z:lz|neuron_z:comb_137 ; neuron_z    ; work         ;
+;       |neuron_z:comb_204|  ; 35 (35)             ; 65 (65)                   ; 0                 ; 2          ; 0    ; 0            ; |nn|layer_z:lz|neuron_z:comb_204 ; neuron_z    ; work         ;
+;       |neuron_z:comb_3|    ; 44 (44)             ; 64 (64)                   ; 0                 ; 2          ; 0    ; 0            ; |nn|layer_z:lz|neuron_z:comb_3   ; neuron_z    ; work         ;
+;       |neuron_z:comb_70|   ; 34 (34)             ; 64 (64)                   ; 0                 ; 2          ; 0    ; 0            ; |nn|layer_z:lz|neuron_z:comb_70  ; neuron_z    ; work         ;
++----------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+----------------------------------+-------------+--------------+
+Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
+
+
++-----------------------------------------------+
+; Analysis & Synthesis DSP Block Usage Summary  ;
++---------------------------------+-------------+
+; Statistic                       ; Number Used ;
++---------------------------------+-------------+
+; Two Independent 18x18           ; 4           ;
+; Sum of two 18x18                ; 4           ;
+; Total number of DSP blocks      ; 8           ;
+;                                 ;             ;
+; Fixed Point Unsigned Multiplier ; 12          ;
++---------------------------------+-------------+
+
+
++---------------------------------------------------------------------------------------------------------------+
+; Registers Removed During Synthesis                                                                            ;
++-------------------------------------------------------+-------------------------------------------------------+
+; Register name                                         ; Reason for Removal                                    ;
++-------------------------------------------------------+-------------------------------------------------------+
+; layer_z:lz|neuron_z:comb_137|Wreg[65..95]             ; Stuck at GND due to stuck port data_in                ;
+; layer_z:lz|neuron_z:comb_3|Wreg[65..95]               ; Stuck at GND due to stuck port data_in                ;
+; layer_z:lz|neuron_z:comb_204|doneReg                  ; Merged with layer_z:lz|neuron_z:comb_137|doneReg      ;
+; layer_z:lz|neuron_z:comb_3|doneReg                    ; Merged with layer_z:lz|neuron_z:comb_137|doneReg      ;
+; layer_z:lz|neuron_z:comb_70|doneReg                   ; Merged with layer_z:lz|neuron_z:comb_137|doneReg      ;
+; layer_z:lz|neuron_z:comb_204|counter[1]               ; Merged with layer_z:lz|neuron_z:comb_137|counter[1]   ;
+; layer_z:lz|neuron_z:comb_3|counter[1]                 ; Merged with layer_z:lz|neuron_z:comb_137|counter[1]   ;
+; layer_z:lz|neuron_z:comb_70|counter[1]                ; Merged with layer_z:lz|neuron_z:comb_137|counter[1]   ;
+; layer_z:lz|neuron_z:comb_204|counter[0]               ; Merged with layer_z:lz|neuron_z:comb_137|counter[0]   ;
+; layer_z:lz|neuron_z:comb_3|counter[0]                 ; Merged with layer_z:lz|neuron_z:comb_137|counter[0]   ;
+; layer_z:lz|neuron_z:comb_70|counter[0]                ; Merged with layer_z:lz|neuron_z:comb_137|counter[0]   ;
+; layer_z:lz|neuron_z:comb_204|counter[31]              ; Merged with layer_z:lz|neuron_z:comb_137|counter[31]  ;
+; layer_z:lz|neuron_z:comb_3|counter[31]                ; Merged with layer_z:lz|neuron_z:comb_137|counter[31]  ;
+; layer_z:lz|neuron_z:comb_70|counter[31]               ; Merged with layer_z:lz|neuron_z:comb_137|counter[31]  ;
+; layer_z:lz|neuron_z:comb_204|counter[30]              ; Merged with layer_z:lz|neuron_z:comb_137|counter[30]  ;
+; layer_z:lz|neuron_z:comb_3|counter[30]                ; Merged with layer_z:lz|neuron_z:comb_137|counter[30]  ;
+; layer_z:lz|neuron_z:comb_70|counter[30]               ; Merged with layer_z:lz|neuron_z:comb_137|counter[30]  ;
+; layer_z:lz|neuron_z:comb_204|counter[29]              ; Merged with layer_z:lz|neuron_z:comb_137|counter[29]  ;
+; layer_z:lz|neuron_z:comb_3|counter[29]                ; Merged with layer_z:lz|neuron_z:comb_137|counter[29]  ;
+; layer_z:lz|neuron_z:comb_70|counter[29]               ; Merged with layer_z:lz|neuron_z:comb_137|counter[29]  ;
+; layer_z:lz|neuron_z:comb_204|counter[28]              ; Merged with layer_z:lz|neuron_z:comb_137|counter[28]  ;
+; layer_z:lz|neuron_z:comb_3|counter[28]                ; Merged with layer_z:lz|neuron_z:comb_137|counter[28]  ;
+; layer_z:lz|neuron_z:comb_70|counter[28]               ; Merged with layer_z:lz|neuron_z:comb_137|counter[28]  ;
+; layer_z:lz|neuron_z:comb_204|counter[27]              ; Merged with layer_z:lz|neuron_z:comb_137|counter[27]  ;
+; layer_z:lz|neuron_z:comb_3|counter[27]                ; Merged with layer_z:lz|neuron_z:comb_137|counter[27]  ;
+; layer_z:lz|neuron_z:comb_70|counter[27]               ; Merged with layer_z:lz|neuron_z:comb_137|counter[27]  ;
+; layer_z:lz|neuron_z:comb_204|counter[26]              ; Merged with layer_z:lz|neuron_z:comb_137|counter[26]  ;
+; layer_z:lz|neuron_z:comb_3|counter[26]                ; Merged with layer_z:lz|neuron_z:comb_137|counter[26]  ;
+; layer_z:lz|neuron_z:comb_70|counter[26]               ; Merged with layer_z:lz|neuron_z:comb_137|counter[26]  ;
+; layer_z:lz|neuron_z:comb_204|counter[25]              ; Merged with layer_z:lz|neuron_z:comb_137|counter[25]  ;
+; layer_z:lz|neuron_z:comb_3|counter[25]                ; Merged with layer_z:lz|neuron_z:comb_137|counter[25]  ;
+; layer_z:lz|neuron_z:comb_70|counter[25]               ; Merged with layer_z:lz|neuron_z:comb_137|counter[25]  ;
+; layer_z:lz|neuron_z:comb_204|counter[24]              ; Merged with layer_z:lz|neuron_z:comb_137|counter[24]  ;
+; layer_z:lz|neuron_z:comb_3|counter[24]                ; Merged with layer_z:lz|neuron_z:comb_137|counter[24]  ;
+; layer_z:lz|neuron_z:comb_70|counter[24]               ; Merged with layer_z:lz|neuron_z:comb_137|counter[24]  ;
+; layer_z:lz|neuron_z:comb_204|counter[23]              ; Merged with layer_z:lz|neuron_z:comb_137|counter[23]  ;
+; layer_z:lz|neuron_z:comb_3|counter[23]                ; Merged with layer_z:lz|neuron_z:comb_137|counter[23]  ;
+; layer_z:lz|neuron_z:comb_70|counter[23]               ; Merged with layer_z:lz|neuron_z:comb_137|counter[23]  ;
+; layer_z:lz|neuron_z:comb_204|counter[22]              ; Merged with layer_z:lz|neuron_z:comb_137|counter[22]  ;
+; layer_z:lz|neuron_z:comb_3|counter[22]                ; Merged with layer_z:lz|neuron_z:comb_137|counter[22]  ;
+; layer_z:lz|neuron_z:comb_70|counter[22]               ; Merged with layer_z:lz|neuron_z:comb_137|counter[22]  ;
+; layer_z:lz|neuron_z:comb_204|counter[21]              ; Merged with layer_z:lz|neuron_z:comb_137|counter[21]  ;
+; layer_z:lz|neuron_z:comb_3|counter[21]                ; Merged with layer_z:lz|neuron_z:comb_137|counter[21]  ;
+; layer_z:lz|neuron_z:comb_70|counter[21]               ; Merged with layer_z:lz|neuron_z:comb_137|counter[21]  ;
+; layer_z:lz|neuron_z:comb_204|counter[20]              ; Merged with layer_z:lz|neuron_z:comb_137|counter[20]  ;
+; layer_z:lz|neuron_z:comb_3|counter[20]                ; Merged with layer_z:lz|neuron_z:comb_137|counter[20]  ;
+; layer_z:lz|neuron_z:comb_70|counter[20]               ; Merged with layer_z:lz|neuron_z:comb_137|counter[20]  ;
+; layer_z:lz|neuron_z:comb_204|counter[19]              ; Merged with layer_z:lz|neuron_z:comb_137|counter[19]  ;
+; layer_z:lz|neuron_z:comb_3|counter[19]                ; Merged with layer_z:lz|neuron_z:comb_137|counter[19]  ;
+; layer_z:lz|neuron_z:comb_70|counter[19]               ; Merged with layer_z:lz|neuron_z:comb_137|counter[19]  ;
+; layer_z:lz|neuron_z:comb_204|counter[18]              ; Merged with layer_z:lz|neuron_z:comb_137|counter[18]  ;
+; layer_z:lz|neuron_z:comb_3|counter[18]                ; Merged with layer_z:lz|neuron_z:comb_137|counter[18]  ;
+; layer_z:lz|neuron_z:comb_70|counter[18]               ; Merged with layer_z:lz|neuron_z:comb_137|counter[18]  ;
+; layer_z:lz|neuron_z:comb_204|counter[17]              ; Merged with layer_z:lz|neuron_z:comb_137|counter[17]  ;
+; layer_z:lz|neuron_z:comb_3|counter[17]                ; Merged with layer_z:lz|neuron_z:comb_137|counter[17]  ;
+; layer_z:lz|neuron_z:comb_70|counter[17]               ; Merged with layer_z:lz|neuron_z:comb_137|counter[17]  ;
+; layer_z:lz|neuron_z:comb_204|counter[16]              ; Merged with layer_z:lz|neuron_z:comb_137|counter[16]  ;
+; layer_z:lz|neuron_z:comb_3|counter[16]                ; Merged with layer_z:lz|neuron_z:comb_137|counter[16]  ;
+; layer_z:lz|neuron_z:comb_70|counter[16]               ; Merged with layer_z:lz|neuron_z:comb_137|counter[16]  ;
+; layer_z:lz|neuron_z:comb_204|counter[15]              ; Merged with layer_z:lz|neuron_z:comb_137|counter[15]  ;
+; layer_z:lz|neuron_z:comb_3|counter[15]                ; Merged with layer_z:lz|neuron_z:comb_137|counter[15]  ;
+; layer_z:lz|neuron_z:comb_70|counter[15]               ; Merged with layer_z:lz|neuron_z:comb_137|counter[15]  ;
+; layer_z:lz|neuron_z:comb_204|counter[14]              ; Merged with layer_z:lz|neuron_z:comb_137|counter[14]  ;
+; layer_z:lz|neuron_z:comb_3|counter[14]                ; Merged with layer_z:lz|neuron_z:comb_137|counter[14]  ;
+; layer_z:lz|neuron_z:comb_70|counter[14]               ; Merged with layer_z:lz|neuron_z:comb_137|counter[14]  ;
+; layer_z:lz|neuron_z:comb_204|counter[13]              ; Merged with layer_z:lz|neuron_z:comb_137|counter[13]  ;
+; layer_z:lz|neuron_z:comb_3|counter[13]                ; Merged with layer_z:lz|neuron_z:comb_137|counter[13]  ;
+; layer_z:lz|neuron_z:comb_70|counter[13]               ; Merged with layer_z:lz|neuron_z:comb_137|counter[13]  ;
+; layer_z:lz|neuron_z:comb_204|counter[12]              ; Merged with layer_z:lz|neuron_z:comb_137|counter[12]  ;
+; layer_z:lz|neuron_z:comb_3|counter[12]                ; Merged with layer_z:lz|neuron_z:comb_137|counter[12]  ;
+; layer_z:lz|neuron_z:comb_70|counter[12]               ; Merged with layer_z:lz|neuron_z:comb_137|counter[12]  ;
+; layer_z:lz|neuron_z:comb_204|counter[11]              ; Merged with layer_z:lz|neuron_z:comb_137|counter[11]  ;
+; layer_z:lz|neuron_z:comb_3|counter[11]                ; Merged with layer_z:lz|neuron_z:comb_137|counter[11]  ;
+; layer_z:lz|neuron_z:comb_70|counter[11]               ; Merged with layer_z:lz|neuron_z:comb_137|counter[11]  ;
+; layer_z:lz|neuron_z:comb_204|counter[10]              ; Merged with layer_z:lz|neuron_z:comb_137|counter[10]  ;
+; layer_z:lz|neuron_z:comb_3|counter[10]                ; Merged with layer_z:lz|neuron_z:comb_137|counter[10]  ;
+; layer_z:lz|neuron_z:comb_70|counter[10]               ; Merged with layer_z:lz|neuron_z:comb_137|counter[10]  ;
+; layer_z:lz|neuron_z:comb_204|counter[9]               ; Merged with layer_z:lz|neuron_z:comb_137|counter[9]   ;
+; layer_z:lz|neuron_z:comb_3|counter[9]                 ; Merged with layer_z:lz|neuron_z:comb_137|counter[9]   ;
+; layer_z:lz|neuron_z:comb_70|counter[9]                ; Merged with layer_z:lz|neuron_z:comb_137|counter[9]   ;
+; layer_z:lz|neuron_z:comb_204|counter[8]               ; Merged with layer_z:lz|neuron_z:comb_137|counter[8]   ;
+; layer_z:lz|neuron_z:comb_3|counter[8]                 ; Merged with layer_z:lz|neuron_z:comb_137|counter[8]   ;
+; layer_z:lz|neuron_z:comb_70|counter[8]                ; Merged with layer_z:lz|neuron_z:comb_137|counter[8]   ;
+; layer_z:lz|neuron_z:comb_204|counter[7]               ; Merged with layer_z:lz|neuron_z:comb_137|counter[7]   ;
+; layer_z:lz|neuron_z:comb_3|counter[7]                 ; Merged with layer_z:lz|neuron_z:comb_137|counter[7]   ;
+; layer_z:lz|neuron_z:comb_70|counter[7]                ; Merged with layer_z:lz|neuron_z:comb_137|counter[7]   ;
+; layer_z:lz|neuron_z:comb_204|counter[6]               ; Merged with layer_z:lz|neuron_z:comb_137|counter[6]   ;
+; layer_z:lz|neuron_z:comb_3|counter[6]                 ; Merged with layer_z:lz|neuron_z:comb_137|counter[6]   ;
+; layer_z:lz|neuron_z:comb_70|counter[6]                ; Merged with layer_z:lz|neuron_z:comb_137|counter[6]   ;
+; layer_z:lz|neuron_z:comb_204|counter[5]               ; Merged with layer_z:lz|neuron_z:comb_137|counter[5]   ;
+; layer_z:lz|neuron_z:comb_3|counter[5]                 ; Merged with layer_z:lz|neuron_z:comb_137|counter[5]   ;
+; layer_z:lz|neuron_z:comb_70|counter[5]                ; Merged with layer_z:lz|neuron_z:comb_137|counter[5]   ;
+; layer_z:lz|neuron_z:comb_204|counter[4]               ; Merged with layer_z:lz|neuron_z:comb_137|counter[4]   ;
+; layer_z:lz|neuron_z:comb_3|counter[4]                 ; Merged with layer_z:lz|neuron_z:comb_137|counter[4]   ;
+; layer_z:lz|neuron_z:comb_70|counter[4]                ; Merged with layer_z:lz|neuron_z:comb_137|counter[4]   ;
+; layer_z:lz|neuron_z:comb_204|counter[3]               ; Merged with layer_z:lz|neuron_z:comb_137|counter[3]   ;
+; layer_z:lz|neuron_z:comb_3|counter[3]                 ; Merged with layer_z:lz|neuron_z:comb_137|counter[3]   ;
+; layer_z:lz|neuron_z:comb_70|counter[3]                ; Merged with layer_z:lz|neuron_z:comb_137|counter[3]   ;
+; layer_z:lz|neuron_z:comb_204|counter[2]               ; Merged with layer_z:lz|neuron_z:comb_137|counter[2]   ;
+; layer_z:lz|neuron_z:comb_3|counter[2]                 ; Merged with layer_z:lz|neuron_z:comb_137|counter[2]   ;
+; layer_z:lz|neuron_z:comb_70|counter[2]                ; Merged with layer_z:lz|neuron_z:comb_137|counter[2]   ;
+; layer_z:lz|neuron_z:comb_137|Scurrreg[34..63]         ; Merged with layer_z:lz|neuron_z:comb_137|Scurrreg[33] ;
+; layer_z:lz|neuron_z:comb_204|Scurrreg[33..63]         ; Merged with layer_z:lz|neuron_z:comb_137|Scurrreg[33] ;
+; layer_z:lz|neuron_z:comb_3|Scurrreg[33..63]           ; Merged with layer_z:lz|neuron_z:comb_137|Scurrreg[33] ;
+; layer_z:lz|neuron_z:comb_3|Wreg[1..31]                ; Merged with layer_z:lz|neuron_z:comb_137|Scurrreg[33] ;
+; layer_z:lz|neuron_z:comb_70|Scurrreg[33..63]          ; Merged with layer_z:lz|neuron_z:comb_137|Scurrreg[33] ;
+; layer_z:lz|neuron_z:comb_70|Wreg[33..63]              ; Merged with layer_z:lz|neuron_z:comb_137|Scurrreg[33] ;
+; layer_z:lz|neuron_z:comb_137|Wreg[0]                  ; Merged with layer_z:lz|neuron_z:comb_137|Scurrreg[0]  ;
+; layer_z:lz|neuron_z:comb_204|Scurrreg[0]              ; Merged with layer_z:lz|neuron_z:comb_137|Scurrreg[0]  ;
+; layer_z:lz|neuron_z:comb_204|Wreg[0]                  ; Merged with layer_z:lz|neuron_z:comb_137|Scurrreg[0]  ;
+; layer_z:lz|neuron_z:comb_3|Scurrreg[0]                ; Merged with layer_z:lz|neuron_z:comb_137|Scurrreg[0]  ;
+; layer_z:lz|neuron_z:comb_3|Wreg[0]                    ; Merged with layer_z:lz|neuron_z:comb_137|Scurrreg[0]  ;
+; layer_z:lz|neuron_z:comb_70|Scurrreg[0]               ; Merged with layer_z:lz|neuron_z:comb_137|Scurrreg[0]  ;
+; layer_z:lz|neuron_z:comb_70|Wreg[0]                   ; Merged with layer_z:lz|neuron_z:comb_137|Scurrreg[0]  ;
+; layer_z:lz|neuron_z:comb_137|Scurrreg[1..9,11..31]    ; Merged with layer_z:lz|neuron_z:comb_137|Scurrreg[10] ;
+; layer_z:lz|neuron_z:comb_204|Scurrreg[1..31]          ; Merged with layer_z:lz|neuron_z:comb_137|Scurrreg[10] ;
+; layer_z:lz|neuron_z:comb_3|Scurrreg[1..31]            ; Merged with layer_z:lz|neuron_z:comb_137|Scurrreg[10] ;
+; layer_z:lz|neuron_z:comb_70|Scurrreg[1..31]           ; Merged with layer_z:lz|neuron_z:comb_137|Scurrreg[10] ;
+; layer_z:lz|neuron_z:comb_70|Wreg[1..31]               ; Merged with layer_z:lz|neuron_z:comb_137|Scurrreg[10] ;
+; layer_z:lz|neuron_z:comb_137|Wreg[1..32]              ; Merged with layer_z:lz|neuron_z:comb_137|Scurrreg[32] ;
+; layer_z:lz|neuron_z:comb_204|Scurrreg[32]             ; Merged with layer_z:lz|neuron_z:comb_137|Scurrreg[32] ;
+; layer_z:lz|neuron_z:comb_204|Wreg[32..63]             ; Merged with layer_z:lz|neuron_z:comb_137|Scurrreg[32] ;
+; layer_z:lz|neuron_z:comb_3|Scurrreg[32]               ; Merged with layer_z:lz|neuron_z:comb_137|Scurrreg[32] ;
+; layer_z:lz|neuron_z:comb_3|Wreg[32]                   ; Merged with layer_z:lz|neuron_z:comb_137|Scurrreg[32] ;
+; layer_z:lz|neuron_z:comb_70|Scurrreg[32]              ; Merged with layer_z:lz|neuron_z:comb_137|Scurrreg[32] ;
+; layer_z:lz|neuron_z:comb_70|Wreg[32]                  ; Merged with layer_z:lz|neuron_z:comb_137|Scurrreg[32] ;
+; layer_z:lz|neuron_z:comb_204|Wreg[1..9,11..31]        ; Merged with layer_z:lz|neuron_z:comb_204|Wreg[10]     ;
+; layer_z:lz|neuron_z:comb_137|Scurrreg[65..95]         ; Merged with layer_z:lz|neuron_z:comb_137|Scurrreg[64] ;
+; layer_z:lz|neuron_z:comb_137|Wreg[33..64]             ; Merged with layer_z:lz|neuron_z:comb_137|Scurrreg[64] ;
+; layer_z:lz|neuron_z:comb_204|Scurrreg[64..95]         ; Merged with layer_z:lz|neuron_z:comb_137|Scurrreg[64] ;
+; layer_z:lz|neuron_z:comb_204|Wreg[64..95]             ; Merged with layer_z:lz|neuron_z:comb_137|Scurrreg[64] ;
+; layer_z:lz|neuron_z:comb_3|Scurrreg[64..95]           ; Merged with layer_z:lz|neuron_z:comb_137|Scurrreg[64] ;
+; layer_z:lz|neuron_z:comb_3|Wreg[33..64]               ; Merged with layer_z:lz|neuron_z:comb_137|Scurrreg[64] ;
+; layer_z:lz|neuron_z:comb_70|Scurrreg[64..95]          ; Merged with layer_z:lz|neuron_z:comb_137|Scurrreg[64] ;
+; layer_z:lz|neuron_z:comb_70|Wreg[64..95]              ; Merged with layer_z:lz|neuron_z:comb_137|Scurrreg[64] ;
+; argmax:comb_3|Scurrreg[29..31,61..63,93..95,125..127] ; Stuck at GND due to stuck port data_in                ;
+; argmax:comb_3|sum[29..31]                             ; Stuck at GND due to stuck port data_in                ;
+; argmax:comb_3|Snextreg[29..31]                        ; Stuck at GND due to stuck port data_in                ;
+; argmax:comb_3|Scurrreg[28,60,92,124]                  ; Stuck at GND due to stuck port data_in                ;
+; argmax:comb_3|sum[28]                                 ; Stuck at GND due to stuck port data_in                ;
+; argmax:comb_3|Snextreg[28]                            ; Stuck at GND due to stuck port data_in                ;
+; argmax:comb_3|Scurrreg[3..27,35..59,67..91,99..123]   ; Stuck at GND due to stuck port data_in                ;
+; argmax:comb_3|sum[3..27]                              ; Stuck at GND due to stuck port data_in                ;
+; argmax:comb_3|Snextreg[3..27]                         ; Stuck at GND due to stuck port data_in                ;
+; Total Number of Removed Registers = 1035              ;                                                       ;
++-------------------------------------------------------+-------------------------------------------------------+
+
+
++---------------------------------------------------------------------------------------------------------------------------------------------------+
+; Removed Registers Triggering Further Register Optimizations                                                                                       ;
++-----------------------------+---------------------------+-----------------------------------------------------------------------------------------+
+; Register name               ; Reason for Removal        ; Registers Removed due to This Register                                                  ;
++-----------------------------+---------------------------+-----------------------------------------------------------------------------------------+
+; argmax:comb_3|Scurrreg[125] ; Stuck at GND              ; argmax:comb_3|Scurrreg[93], argmax:comb_3|Scurrreg[61], argmax:comb_3|Scurrreg[29],     ;
+;                             ; due to stuck port data_in ; argmax:comb_3|sum[29], argmax:comb_3|sum[30], argmax:comb_3|sum[31],                    ;
+;                             ;                           ; argmax:comb_3|Snextreg[29], argmax:comb_3|Snextreg[30], argmax:comb_3|Snextreg[31],     ;
+;                             ;                           ; argmax:comb_3|sum[28], argmax:comb_3|Snextreg[28], argmax:comb_3|Scurrreg[49],          ;
+;                             ;                           ; argmax:comb_3|Scurrreg[50], argmax:comb_3|Scurrreg[51], argmax:comb_3|Scurrreg[52],     ;
+;                             ;                           ; argmax:comb_3|Scurrreg[17], argmax:comb_3|Scurrreg[18], argmax:comb_3|Scurrreg[19],     ;
+;                             ;                           ; argmax:comb_3|Scurrreg[20], argmax:comb_3|sum[3], argmax:comb_3|sum[4],                 ;
+;                             ;                           ; argmax:comb_3|sum[5], argmax:comb_3|sum[6], argmax:comb_3|sum[7], argmax:comb_3|sum[8], ;
+;                             ;                           ; argmax:comb_3|sum[9], argmax:comb_3|sum[10], argmax:comb_3|sum[11],                     ;
+;                             ;                           ; argmax:comb_3|sum[12], argmax:comb_3|sum[13], argmax:comb_3|sum[14],                    ;
+;                             ;                           ; argmax:comb_3|sum[15], argmax:comb_3|sum[16], argmax:comb_3|sum[17],                    ;
+;                             ;                           ; argmax:comb_3|sum[18], argmax:comb_3|sum[19], argmax:comb_3|sum[20],                    ;
+;                             ;                           ; argmax:comb_3|sum[21], argmax:comb_3|sum[22], argmax:comb_3|sum[23],                    ;
+;                             ;                           ; argmax:comb_3|sum[24], argmax:comb_3|sum[25], argmax:comb_3|sum[26],                    ;
+;                             ;                           ; argmax:comb_3|sum[27], argmax:comb_3|Snextreg[3], argmax:comb_3|Snextreg[4],            ;
+;                             ;                           ; argmax:comb_3|Snextreg[5], argmax:comb_3|Snextreg[6], argmax:comb_3|Snextreg[7],        ;
+;                             ;                           ; argmax:comb_3|Snextreg[8], argmax:comb_3|Snextreg[9], argmax:comb_3|Snextreg[10],       ;
+;                             ;                           ; argmax:comb_3|Snextreg[11], argmax:comb_3|Snextreg[12], argmax:comb_3|Snextreg[13],     ;
+;                             ;                           ; argmax:comb_3|Snextreg[14], argmax:comb_3|Snextreg[15], argmax:comb_3|Snextreg[16],     ;
+;                             ;                           ; argmax:comb_3|Snextreg[17], argmax:comb_3|Snextreg[18], argmax:comb_3|Snextreg[19],     ;
+;                             ;                           ; argmax:comb_3|Snextreg[20], argmax:comb_3|Snextreg[21], argmax:comb_3|Snextreg[22],     ;
+;                             ;                           ; argmax:comb_3|Snextreg[23], argmax:comb_3|Snextreg[24], argmax:comb_3|Snextreg[25],     ;
+;                             ;                           ; argmax:comb_3|Snextreg[26], argmax:comb_3|Snextreg[27]                                  ;
+; argmax:comb_3|Scurrreg[109] ; Stuck at GND              ; argmax:comb_3|Scurrreg[77], argmax:comb_3|Scurrreg[45], argmax:comb_3|Scurrreg[13]      ;
+;                             ; due to stuck port data_in ;                                                                                         ;
+; argmax:comb_3|Scurrreg[123] ; Stuck at GND              ; argmax:comb_3|Scurrreg[91], argmax:comb_3|Scurrreg[59], argmax:comb_3|Scurrreg[27]      ;
+;                             ; due to stuck port data_in ;                                                                                         ;
+; argmax:comb_3|Scurrreg[122] ; Stuck at GND              ; argmax:comb_3|Scurrreg[90], argmax:comb_3|Scurrreg[58], argmax:comb_3|Scurrreg[26]      ;
+;                             ; due to stuck port data_in ;                                                                                         ;
+; argmax:comb_3|Scurrreg[121] ; Stuck at GND              ; argmax:comb_3|Scurrreg[89], argmax:comb_3|Scurrreg[57], argmax:comb_3|Scurrreg[25]      ;
+;                             ; due to stuck port data_in ;                                                                                         ;
+; argmax:comb_3|Scurrreg[120] ; Stuck at GND              ; argmax:comb_3|Scurrreg[88], argmax:comb_3|Scurrreg[56], argmax:comb_3|Scurrreg[24]      ;
+;                             ; due to stuck port data_in ;                                                                                         ;
+; argmax:comb_3|Scurrreg[119] ; Stuck at GND              ; argmax:comb_3|Scurrreg[87], argmax:comb_3|Scurrreg[55], argmax:comb_3|Scurrreg[23]      ;
+;                             ; due to stuck port data_in ;                                                                                         ;
+; argmax:comb_3|Scurrreg[118] ; Stuck at GND              ; argmax:comb_3|Scurrreg[86], argmax:comb_3|Scurrreg[54], argmax:comb_3|Scurrreg[22]      ;
+;                             ; due to stuck port data_in ;                                                                                         ;
+; argmax:comb_3|Scurrreg[117] ; Stuck at GND              ; argmax:comb_3|Scurrreg[85], argmax:comb_3|Scurrreg[53], argmax:comb_3|Scurrreg[21]      ;
+;                             ; due to stuck port data_in ;                                                                                         ;
+; argmax:comb_3|Scurrreg[112] ; Stuck at GND              ; argmax:comb_3|Scurrreg[80], argmax:comb_3|Scurrreg[48], argmax:comb_3|Scurrreg[16]      ;
+;                             ; due to stuck port data_in ;                                                                                         ;
+; argmax:comb_3|Scurrreg[111] ; Stuck at GND              ; argmax:comb_3|Scurrreg[79], argmax:comb_3|Scurrreg[47], argmax:comb_3|Scurrreg[15]      ;
+;                             ; due to stuck port data_in ;                                                                                         ;
+; argmax:comb_3|Scurrreg[110] ; Stuck at GND              ; argmax:comb_3|Scurrreg[78], argmax:comb_3|Scurrreg[46], argmax:comb_3|Scurrreg[14]      ;
+;                             ; due to stuck port data_in ;                                                                                         ;
+; argmax:comb_3|Scurrreg[108] ; Stuck at GND              ; argmax:comb_3|Scurrreg[76], argmax:comb_3|Scurrreg[44], argmax:comb_3|Scurrreg[12]      ;
+;                             ; due to stuck port data_in ;                                                                                         ;
+; argmax:comb_3|Scurrreg[107] ; Stuck at GND              ; argmax:comb_3|Scurrreg[75], argmax:comb_3|Scurrreg[43], argmax:comb_3|Scurrreg[11]      ;
+;                             ; due to stuck port data_in ;                                                                                         ;
+; argmax:comb_3|Scurrreg[106] ; Stuck at GND              ; argmax:comb_3|Scurrreg[74], argmax:comb_3|Scurrreg[42], argmax:comb_3|Scurrreg[10]      ;
+;                             ; due to stuck port data_in ;                                                                                         ;
+; argmax:comb_3|Scurrreg[105] ; Stuck at GND              ; argmax:comb_3|Scurrreg[73], argmax:comb_3|Scurrreg[41], argmax:comb_3|Scurrreg[9]       ;
+;                             ; due to stuck port data_in ;                                                                                         ;
+; argmax:comb_3|Scurrreg[104] ; Stuck at GND              ; argmax:comb_3|Scurrreg[72], argmax:comb_3|Scurrreg[40], argmax:comb_3|Scurrreg[8]       ;
+;                             ; due to stuck port data_in ;                                                                                         ;
+; argmax:comb_3|Scurrreg[103] ; Stuck at GND              ; argmax:comb_3|Scurrreg[71], argmax:comb_3|Scurrreg[39], argmax:comb_3|Scurrreg[7]       ;
+;                             ; due to stuck port data_in ;                                                                                         ;
+; argmax:comb_3|Scurrreg[102] ; Stuck at GND              ; argmax:comb_3|Scurrreg[70], argmax:comb_3|Scurrreg[38], argmax:comb_3|Scurrreg[6]       ;
+;                             ; due to stuck port data_in ;                                                                                         ;
+; argmax:comb_3|Scurrreg[101] ; Stuck at GND              ; argmax:comb_3|Scurrreg[69], argmax:comb_3|Scurrreg[37], argmax:comb_3|Scurrreg[5]       ;
+;                             ; due to stuck port data_in ;                                                                                         ;
+; argmax:comb_3|Scurrreg[100] ; Stuck at GND              ; argmax:comb_3|Scurrreg[68], argmax:comb_3|Scurrreg[36], argmax:comb_3|Scurrreg[4]       ;
+;                             ; due to stuck port data_in ;                                                                                         ;
+; argmax:comb_3|Scurrreg[99]  ; Stuck at GND              ; argmax:comb_3|Scurrreg[67], argmax:comb_3|Scurrreg[35], argmax:comb_3|Scurrreg[3]       ;
+;                             ; due to stuck port data_in ;                                                                                         ;
+; argmax:comb_3|Scurrreg[124] ; Stuck at GND              ; argmax:comb_3|Scurrreg[92], argmax:comb_3|Scurrreg[60], argmax:comb_3|Scurrreg[28]      ;
+;                             ; due to stuck port data_in ;                                                                                         ;
+; argmax:comb_3|Scurrreg[127] ; Stuck at GND              ; argmax:comb_3|Scurrreg[95], argmax:comb_3|Scurrreg[63], argmax:comb_3|Scurrreg[31]      ;
+;                             ; due to stuck port data_in ;                                                                                         ;
+; argmax:comb_3|Scurrreg[126] ; Stuck at GND              ; argmax:comb_3|Scurrreg[94], argmax:comb_3|Scurrreg[62], argmax:comb_3|Scurrreg[30]      ;
+;                             ; due to stuck port data_in ;                                                                                         ;
+; argmax:comb_3|Scurrreg[113] ; Stuck at GND              ; argmax:comb_3|Scurrreg[81]                                                              ;
+;                             ; due to stuck port data_in ;                                                                                         ;
+; argmax:comb_3|Scurrreg[114] ; Stuck at GND              ; argmax:comb_3|Scurrreg[82]                                                              ;
+;                             ; due to stuck port data_in ;                                                                                         ;
+; argmax:comb_3|Scurrreg[115] ; Stuck at GND              ; argmax:comb_3|Scurrreg[83]                                                              ;
+;                             ; due to stuck port data_in ;                                                                                         ;
+; argmax:comb_3|Scurrreg[116] ; Stuck at GND              ; argmax:comb_3|Scurrreg[84]                                                              ;
+;                             ; due to stuck port data_in ;                                                                                         ;
++-----------------------------+---------------------------+-----------------------------------------------------------------------------------------+
+
+
++------------------------------------------------------+
+; General Register Statistics                          ;
++----------------------------------------------+-------+
+; Statistic                                    ; Value ;
++----------------------------------------------+-------+
+; Total registers                              ; 349   ;
+; Number of registers using Synchronous Clear  ; 155   ;
+; Number of registers using Synchronous Load   ; 9     ;
+; Number of registers using Asynchronous Clear ; 344   ;
+; Number of registers using Asynchronous Load  ; 0     ;
+; Number of registers using Clock Enable       ; 219   ;
+; Number of registers using Preset             ; 0     ;
++----------------------------------------------+-------+
+
+
++------------------------------------------------------------------------------------------------------------------------------------------+
+; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                           ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------+
+; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------+
+; 3:1                ; 32 bits   ; 64 LEs        ; 64 LEs               ; 0 LEs                  ; No         ; |nn|layer_z:lz|Snext[16]   ;
+; 3:1                ; 32 bits   ; 64 LEs        ; 64 LEs               ; 0 LEs                  ; No         ; |nn|layer_z:lz|Snext[49]   ;
+; 3:1                ; 32 bits   ; 64 LEs        ; 64 LEs               ; 0 LEs                  ; No         ; |nn|layer_z:lz|Snext[81]   ;
+; 3:1                ; 32 bits   ; 64 LEs        ; 64 LEs               ; 0 LEs                  ; No         ; |nn|layer_z:lz|Snext[112]  ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------+
+
+
++--------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: Top-level Entity: |nn ;
++----------------+-------+-------------------------------------------+
+; Parameter Name ; Value ; Type                                      ;
++----------------+-------+-------------------------------------------+
+; SIZE           ; 32    ; Signed Integer                            ;
+; N              ; 3     ; Signed Integer                            ;
+; M              ; 4     ; Signed Integer                            ;
+; K              ; 1     ; Signed Integer                            ;
++----------------+-------+-------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++---------------------------------------------------------+
+; Parameter Settings for User Entity Instance: layer_z:lz ;
++----------------+-------+--------------------------------+
+; Parameter Name ; Value ; Type                           ;
++----------------+-------+--------------------------------+
+; SIZE           ; 32    ; Signed Integer                 ;
+; N              ; 3     ; Signed Integer                 ;
+; M              ; 4     ; Signed Integer                 ;
+; K              ; 1     ; Signed Integer                 ;
++----------------+-------+--------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: layer_z:lz|neuron_z:comb_3 ;
++----------------+-------+------------------------------------------------+
+; Parameter Name ; Value ; Type                                           ;
++----------------+-------+------------------------------------------------+
+; SIZE           ; 32    ; Signed Integer                                 ;
+; N              ; 3     ; Signed Integer                                 ;
++----------------+-------+------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++--------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: layer_z:lz|neuron_z:comb_70 ;
++----------------+-------+-------------------------------------------------+
+; Parameter Name ; Value ; Type                                            ;
++----------------+-------+-------------------------------------------------+
+; SIZE           ; 32    ; Signed Integer                                  ;
+; N              ; 3     ; Signed Integer                                  ;
++----------------+-------+-------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++---------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: layer_z:lz|neuron_z:comb_137 ;
++----------------+-------+--------------------------------------------------+
+; Parameter Name ; Value ; Type                                             ;
++----------------+-------+--------------------------------------------------+
+; SIZE           ; 32    ; Signed Integer                                   ;
+; N              ; 3     ; Signed Integer                                   ;
++----------------+-------+--------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++---------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: layer_z:lz|neuron_z:comb_204 ;
++----------------+-------+--------------------------------------------------+
+; Parameter Name ; Value ; Type                                             ;
++----------------+-------+--------------------------------------------------+
+; SIZE           ; 32    ; Signed Integer                                   ;
+; N              ; 3     ; Signed Integer                                   ;
++----------------+-------+--------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: argmax:comb_3 ;
++----------------+-------+-----------------------------------+
+; Parameter Name ; Value ; Type                              ;
++----------------+-------+-----------------------------------+
+; SIZE           ; 32    ; Signed Integer                    ;
+; N              ; 4     ; Signed Integer                    ;
++----------------+-------+-----------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-------------------------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "argmax:comb_3"                                                                                           ;
++------+--------+----------+----------------------------------------------------------------------------------------------------------+
+; Port ; Type   ; Severity ; Details                                                                                                  ;
++------+--------+----------+----------------------------------------------------------------------------------------------------------+
+; done ; Output ; Warning  ; Declared by entity but not connected by instance. Logic that only feeds a dangling port will be removed. ;
++------+--------+----------+----------------------------------------------------------------------------------------------------------+
+
+
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "layer_z:lz|neuron_z:comb_204"                                                                                                                    ;
++----------+-------+----------+-----------------------------------------------------------------------------------------------------------------------------------------------+
+; Port     ; Type  ; Severity ; Details                                                                                                                                       ;
++----------+-------+----------+-----------------------------------------------------------------------------------------------------------------------------------------------+
+; b        ; Input ; Warning  ; Input port expression (32 bits) is smaller than the input port (96 bits) it drives.  Extra input bit(s) "b[95..32]" will be connected to GND. ;
+; b[1..0]  ; Input ; Info     ; Stuck at VCC                                                                                                                                  ;
+; b[31..2] ; Input ; Info     ; Stuck at GND                                                                                                                                  ;
++----------+-------+----------+-----------------------------------------------------------------------------------------------------------------------------------------------+
+
+
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "layer_z:lz|neuron_z:comb_137"                                                                                                                    ;
++----------+-------+----------+-----------------------------------------------------------------------------------------------------------------------------------------------+
+; Port     ; Type  ; Severity ; Details                                                                                                                                       ;
++----------+-------+----------+-----------------------------------------------------------------------------------------------------------------------------------------------+
+; b        ; Input ; Warning  ; Input port expression (32 bits) is smaller than the input port (96 bits) it drives.  Extra input bit(s) "b[95..32]" will be connected to GND. ;
+; b[1..0]  ; Input ; Info     ; Stuck at VCC                                                                                                                                  ;
+; b[31..2] ; Input ; Info     ; Stuck at GND                                                                                                                                  ;
++----------+-------+----------+-----------------------------------------------------------------------------------------------------------------------------------------------+
+
+
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "layer_z:lz|neuron_z:comb_70"                                                                                                                     ;
++----------+-------+----------+-----------------------------------------------------------------------------------------------------------------------------------------------+
+; Port     ; Type  ; Severity ; Details                                                                                                                                       ;
++----------+-------+----------+-----------------------------------------------------------------------------------------------------------------------------------------------+
+; b        ; Input ; Warning  ; Input port expression (32 bits) is smaller than the input port (96 bits) it drives.  Extra input bit(s) "b[95..32]" will be connected to GND. ;
+; b[1..0]  ; Input ; Info     ; Stuck at VCC                                                                                                                                  ;
+; b[31..2] ; Input ; Info     ; Stuck at GND                                                                                                                                  ;
++----------+-------+----------+-----------------------------------------------------------------------------------------------------------------------------------------------+
+
+
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "layer_z:lz|neuron_z:comb_3"                                                                                                                      ;
++----------+-------+----------+-----------------------------------------------------------------------------------------------------------------------------------------------+
+; Port     ; Type  ; Severity ; Details                                                                                                                                       ;
++----------+-------+----------+-----------------------------------------------------------------------------------------------------------------------------------------------+
+; b        ; Input ; Warning  ; Input port expression (32 bits) is smaller than the input port (96 bits) it drives.  Extra input bit(s) "b[95..32]" will be connected to GND. ;
+; b[1..0]  ; Input ; Info     ; Stuck at VCC                                                                                                                                  ;
+; b[31..2] ; Input ; Info     ; Stuck at GND                                                                                                                                  ;
++----------+-------+----------+-----------------------------------------------------------------------------------------------------------------------------------------------+
+
+
++-------------------------------------------------+
+; Port Connectivity Checks: "layer_z:lz"          ;
++---------------+-------+----------+--------------+
+; Port          ; Type  ; Severity ; Details      ;
++---------------+-------+----------+--------------+
+; Scurr[95..64] ; Input ; Info     ; Stuck at VCC ;
+; Scurr[63..33] ; Input ; Info     ; Stuck at GND ;
+; Scurr[31..1]  ; Input ; Info     ; Stuck at GND ;
+; Scurr[32]     ; Input ; Info     ; Stuck at VCC ;
+; Scurr[0]      ; Input ; Info     ; Stuck at VCC ;
+; W[383..320]   ; Input ; Info     ; Stuck at VCC ;
+; W[256..160]   ; Input ; Info     ; Stuck at VCC ;
+; W[64..32]     ; Input ; Info     ; Stuck at VCC ;
+; W[319..289]   ; Input ; Info     ; Stuck at GND ;
+; W[287..257]   ; Input ; Info     ; Stuck at GND ;
+; W[159..129]   ; Input ; Info     ; Stuck at GND ;
+; W[127..97]    ; Input ; Info     ; Stuck at GND ;
+; W[95..65]     ; Input ; Info     ; Stuck at GND ;
+; W[31..1]      ; Input ; Info     ; Stuck at GND ;
+; W[288]        ; Input ; Info     ; Stuck at VCC ;
+; W[128]        ; Input ; Info     ; Stuck at VCC ;
+; W[96]         ; Input ; Info     ; Stuck at VCC ;
+; W[0]          ; Input ; Info     ; Stuck at VCC ;
++---------------+-------+----------+--------------+
+
+
++-----------------------------------------------------+
+; Post-Synthesis Netlist Statistics for Top Partition ;
++-----------------------+-----------------------------+
+; Type                  ; Count                       ;
++-----------------------+-----------------------------+
+; arriav_ff             ; 349                         ;
+;     CLR               ; 9                           ;
+;     CLR SCLR          ; 120                         ;
+;     ENA               ; 4                           ;
+;     ENA CLR           ; 171                         ;
+;     ENA CLR SCLR      ; 35                          ;
+;     ENA CLR SLD       ; 9                           ;
+;     plain             ; 1                           ;
+; arriav_lcell_comb     ; 339                         ;
+;     arith             ; 124                         ;
+;         0 data inputs ; 26                          ;
+;         1 data inputs ; 94                          ;
+;         2 data inputs ; 4                           ;
+;     normal            ; 87                          ;
+;         0 data inputs ; 1                           ;
+;         2 data inputs ; 20                          ;
+;         3 data inputs ; 18                          ;
+;         4 data inputs ; 2                           ;
+;         5 data inputs ; 12                          ;
+;         6 data inputs ; 34                          ;
+;     shared            ; 128                         ;
+;         2 data inputs ; 72                          ;
+;         3 data inputs ; 56                          ;
+; arriav_mac            ; 8                           ;
+; boundary_port         ; 168                         ;
+;                       ;                             ;
+; Max LUT depth         ; 5.90                        ;
+; Average LUT depth     ; 3.06                        ;
++-----------------------+-----------------------------+
+
+
++-------------------------------+
+; Elapsed Time Per Partition    ;
++----------------+--------------+
+; Partition Name ; Elapsed Time ;
++----------------+--------------+
+; Top            ; 00:00:00     ;
++----------------+--------------+
+
+
++-------------------------------+
+; Analysis & Synthesis Messages ;
++-------------------------------+
+Info: *******************************************************************
+Info: Running Quartus Prime Analysis & Synthesis
+    Info: Version 20.1.0 Build 711 06/05/2020 SJ Lite Edition
+    Info: Processing started: Tue Nov  9 00:34:03 2021
+Info: Command: quartus_map --read_settings_files=on --write_settings_files=off nn -c nn
+Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
+Info (20030): Parallel compilation is enabled and will use 16 of the 16 processors detected
+Info (12021): Found 4 design units, including 4 entities, in source file nn.v
+    Info (12023): Found entity 1: nn File: /media/a/hse/soc/hpc/lab_02/nn/nn.v Line: 1
+    Info (12023): Found entity 2: neuron_z File: /media/a/hse/soc/hpc/lab_02/nn/nn.v Line: 61
+    Info (12023): Found entity 3: layer_z File: /media/a/hse/soc/hpc/lab_02/nn/nn.v Line: 142
+    Info (12023): Found entity 4: argmax File: /media/a/hse/soc/hpc/lab_02/nn/nn.v Line: 176
+Critical Warning (10846): Verilog HDL Instantiation warning at nn.v(168): instance has no name File: /media/a/hse/soc/hpc/lab_02/nn/nn.v Line: 168
+Critical Warning (10846): Verilog HDL Instantiation warning at nn.v(56): instance has no name File: /media/a/hse/soc/hpc/lab_02/nn/nn.v Line: 56
+Info (12127): Elaborating entity "nn" for the top level hierarchy
+Info (12128): Elaborating entity "layer_z" for hierarchy "layer_z:lz" File: /media/a/hse/soc/hpc/lab_02/nn/nn.v Line: 46
+Info (12128): Elaborating entity "neuron_z" for hierarchy "layer_z:lz|neuron_z:comb_3" File: /media/a/hse/soc/hpc/lab_02/nn/nn.v Line: 168
+Warning (10036): Verilog HDL or VHDL warning at nn.v(80): object "saveReg" assigned a value but never read File: /media/a/hse/soc/hpc/lab_02/nn/nn.v Line: 80
+Warning (10230): Verilog HDL assignment warning at nn.v(134): truncated value with size 96 to match size of target (32) File: /media/a/hse/soc/hpc/lab_02/nn/nn.v Line: 134
+Info (12128): Elaborating entity "argmax" for hierarchy "argmax:comb_3" File: /media/a/hse/soc/hpc/lab_02/nn/nn.v Line: 56
+Warning (10036): Verilog HDL or VHDL warning at nn.v(193): object "saveReg" assigned a value but never read File: /media/a/hse/soc/hpc/lab_02/nn/nn.v Line: 193
+Warning (12241): 5 hierarchies have connectivity warnings - see the Connectivity Checks report folder
+Warning (13024): Output pins are stuck at VCC or GND
+    Warning (13410): Pin "Snext[3]" is stuck at GND File: /media/a/hse/soc/hpc/lab_02/nn/nn.v Line: 7
+    Warning (13410): Pin "Snext[4]" is stuck at GND File: /media/a/hse/soc/hpc/lab_02/nn/nn.v Line: 7
+    Warning (13410): Pin "Snext[5]" is stuck at GND File: /media/a/hse/soc/hpc/lab_02/nn/nn.v Line: 7
+    Warning (13410): Pin "Snext[6]" is stuck at GND File: /media/a/hse/soc/hpc/lab_02/nn/nn.v Line: 7
+    Warning (13410): Pin "Snext[7]" is stuck at GND File: /media/a/hse/soc/hpc/lab_02/nn/nn.v Line: 7
+    Warning (13410): Pin "Snext[8]" is stuck at GND File: /media/a/hse/soc/hpc/lab_02/nn/nn.v Line: 7
+    Warning (13410): Pin "Snext[9]" is stuck at GND File: /media/a/hse/soc/hpc/lab_02/nn/nn.v Line: 7
+    Warning (13410): Pin "Snext[10]" is stuck at GND File: /media/a/hse/soc/hpc/lab_02/nn/nn.v Line: 7
+    Warning (13410): Pin "Snext[11]" is stuck at GND File: /media/a/hse/soc/hpc/lab_02/nn/nn.v Line: 7
+    Warning (13410): Pin "Snext[12]" is stuck at GND File: /media/a/hse/soc/hpc/lab_02/nn/nn.v Line: 7
+    Warning (13410): Pin "Snext[13]" is stuck at GND File: /media/a/hse/soc/hpc/lab_02/nn/nn.v Line: 7
+    Warning (13410): Pin "Snext[14]" is stuck at GND File: /media/a/hse/soc/hpc/lab_02/nn/nn.v Line: 7
+    Warning (13410): Pin "Snext[15]" is stuck at GND File: /media/a/hse/soc/hpc/lab_02/nn/nn.v Line: 7
+    Warning (13410): Pin "Snext[16]" is stuck at GND File: /media/a/hse/soc/hpc/lab_02/nn/nn.v Line: 7
+    Warning (13410): Pin "Snext[17]" is stuck at GND File: /media/a/hse/soc/hpc/lab_02/nn/nn.v Line: 7
+    Warning (13410): Pin "Snext[18]" is stuck at GND File: /media/a/hse/soc/hpc/lab_02/nn/nn.v Line: 7
+    Warning (13410): Pin "Snext[19]" is stuck at GND File: /media/a/hse/soc/hpc/lab_02/nn/nn.v Line: 7
+    Warning (13410): Pin "Snext[20]" is stuck at GND File: /media/a/hse/soc/hpc/lab_02/nn/nn.v Line: 7
+    Warning (13410): Pin "Snext[21]" is stuck at GND File: /media/a/hse/soc/hpc/lab_02/nn/nn.v Line: 7
+    Warning (13410): Pin "Snext[22]" is stuck at GND File: /media/a/hse/soc/hpc/lab_02/nn/nn.v Line: 7
+    Warning (13410): Pin "Snext[23]" is stuck at GND File: /media/a/hse/soc/hpc/lab_02/nn/nn.v Line: 7
+    Warning (13410): Pin "Snext[24]" is stuck at GND File: /media/a/hse/soc/hpc/lab_02/nn/nn.v Line: 7
+    Warning (13410): Pin "Snext[25]" is stuck at GND File: /media/a/hse/soc/hpc/lab_02/nn/nn.v Line: 7
+    Warning (13410): Pin "Snext[26]" is stuck at GND File: /media/a/hse/soc/hpc/lab_02/nn/nn.v Line: 7
+    Warning (13410): Pin "Snext[27]" is stuck at GND File: /media/a/hse/soc/hpc/lab_02/nn/nn.v Line: 7
+    Warning (13410): Pin "Snext[28]" is stuck at GND File: /media/a/hse/soc/hpc/lab_02/nn/nn.v Line: 7
+    Warning (13410): Pin "Snext[29]" is stuck at GND File: /media/a/hse/soc/hpc/lab_02/nn/nn.v Line: 7
+    Warning (13410): Pin "Snext[30]" is stuck at GND File: /media/a/hse/soc/hpc/lab_02/nn/nn.v Line: 7
+    Warning (13410): Pin "Snext[31]" is stuck at GND File: /media/a/hse/soc/hpc/lab_02/nn/nn.v Line: 7
+    Warning (13410): Pin "Snext[35]" is stuck at GND File: /media/a/hse/soc/hpc/lab_02/nn/nn.v Line: 7
+    Warning (13410): Pin "Snext[36]" is stuck at GND File: /media/a/hse/soc/hpc/lab_02/nn/nn.v Line: 7
+    Warning (13410): Pin "Snext[37]" is stuck at GND File: /media/a/hse/soc/hpc/lab_02/nn/nn.v Line: 7
+    Warning (13410): Pin "Snext[38]" is stuck at GND File: /media/a/hse/soc/hpc/lab_02/nn/nn.v Line: 7
+    Warning (13410): Pin "Snext[39]" is stuck at GND File: /media/a/hse/soc/hpc/lab_02/nn/nn.v Line: 7
+    Warning (13410): Pin "Snext[40]" is stuck at GND File: /media/a/hse/soc/hpc/lab_02/nn/nn.v Line: 7
+    Warning (13410): Pin "Snext[41]" is stuck at GND File: /media/a/hse/soc/hpc/lab_02/nn/nn.v Line: 7
+    Warning (13410): Pin "Snext[42]" is stuck at GND File: /media/a/hse/soc/hpc/lab_02/nn/nn.v Line: 7
+    Warning (13410): Pin "Snext[43]" is stuck at GND File: /media/a/hse/soc/hpc/lab_02/nn/nn.v Line: 7
+    Warning (13410): Pin "Snext[44]" is stuck at GND File: /media/a/hse/soc/hpc/lab_02/nn/nn.v Line: 7
+    Warning (13410): Pin "Snext[45]" is stuck at GND File: /media/a/hse/soc/hpc/lab_02/nn/nn.v Line: 7
+    Warning (13410): Pin "Snext[46]" is stuck at GND File: /media/a/hse/soc/hpc/lab_02/nn/nn.v Line: 7
+    Warning (13410): Pin "Snext[47]" is stuck at GND File: /media/a/hse/soc/hpc/lab_02/nn/nn.v Line: 7
+    Warning (13410): Pin "Snext[48]" is stuck at GND File: /media/a/hse/soc/hpc/lab_02/nn/nn.v Line: 7
+    Warning (13410): Pin "Snext[49]" is stuck at GND File: /media/a/hse/soc/hpc/lab_02/nn/nn.v Line: 7
+    Warning (13410): Pin "Snext[50]" is stuck at GND File: /media/a/hse/soc/hpc/lab_02/nn/nn.v Line: 7
+    Warning (13410): Pin "Snext[51]" is stuck at GND File: /media/a/hse/soc/hpc/lab_02/nn/nn.v Line: 7
+    Warning (13410): Pin "Snext[52]" is stuck at GND File: /media/a/hse/soc/hpc/lab_02/nn/nn.v Line: 7
+    Warning (13410): Pin "Snext[53]" is stuck at GND File: /media/a/hse/soc/hpc/lab_02/nn/nn.v Line: 7
+    Warning (13410): Pin "Snext[54]" is stuck at GND File: /media/a/hse/soc/hpc/lab_02/nn/nn.v Line: 7
+    Warning (13410): Pin "Snext[55]" is stuck at GND File: /media/a/hse/soc/hpc/lab_02/nn/nn.v Line: 7
+    Warning (13410): Pin "Snext[56]" is stuck at GND File: /media/a/hse/soc/hpc/lab_02/nn/nn.v Line: 7
+    Warning (13410): Pin "Snext[57]" is stuck at GND File: /media/a/hse/soc/hpc/lab_02/nn/nn.v Line: 7
+    Warning (13410): Pin "Snext[58]" is stuck at GND File: /media/a/hse/soc/hpc/lab_02/nn/nn.v Line: 7
+    Warning (13410): Pin "Snext[59]" is stuck at GND File: /media/a/hse/soc/hpc/lab_02/nn/nn.v Line: 7
+    Warning (13410): Pin "Snext[60]" is stuck at GND File: /media/a/hse/soc/hpc/lab_02/nn/nn.v Line: 7
+    Warning (13410): Pin "Snext[61]" is stuck at GND File: /media/a/hse/soc/hpc/lab_02/nn/nn.v Line: 7
+    Warning (13410): Pin "Snext[62]" is stuck at GND File: /media/a/hse/soc/hpc/lab_02/nn/nn.v Line: 7
+    Warning (13410): Pin "Snext[63]" is stuck at GND File: /media/a/hse/soc/hpc/lab_02/nn/nn.v Line: 7
+    Warning (13410): Pin "Snext[67]" is stuck at GND File: /media/a/hse/soc/hpc/lab_02/nn/nn.v Line: 7
+    Warning (13410): Pin "Snext[68]" is stuck at GND File: /media/a/hse/soc/hpc/lab_02/nn/nn.v Line: 7
+    Warning (13410): Pin "Snext[69]" is stuck at GND File: /media/a/hse/soc/hpc/lab_02/nn/nn.v Line: 7
+    Warning (13410): Pin "Snext[70]" is stuck at GND File: /media/a/hse/soc/hpc/lab_02/nn/nn.v Line: 7
+    Warning (13410): Pin "Snext[71]" is stuck at GND File: /media/a/hse/soc/hpc/lab_02/nn/nn.v Line: 7
+    Warning (13410): Pin "Snext[72]" is stuck at GND File: /media/a/hse/soc/hpc/lab_02/nn/nn.v Line: 7
+    Warning (13410): Pin "Snext[73]" is stuck at GND File: /media/a/hse/soc/hpc/lab_02/nn/nn.v Line: 7
+    Warning (13410): Pin "Snext[74]" is stuck at GND File: /media/a/hse/soc/hpc/lab_02/nn/nn.v Line: 7
+    Warning (13410): Pin "Snext[75]" is stuck at GND File: /media/a/hse/soc/hpc/lab_02/nn/nn.v Line: 7
+    Warning (13410): Pin "Snext[76]" is stuck at GND File: /media/a/hse/soc/hpc/lab_02/nn/nn.v Line: 7
+    Warning (13410): Pin "Snext[77]" is stuck at GND File: /media/a/hse/soc/hpc/lab_02/nn/nn.v Line: 7
+    Warning (13410): Pin "Snext[78]" is stuck at GND File: /media/a/hse/soc/hpc/lab_02/nn/nn.v Line: 7
+    Warning (13410): Pin "Snext[79]" is stuck at GND File: /media/a/hse/soc/hpc/lab_02/nn/nn.v Line: 7
+    Warning (13410): Pin "Snext[80]" is stuck at GND File: /media/a/hse/soc/hpc/lab_02/nn/nn.v Line: 7
+    Warning (13410): Pin "Snext[81]" is stuck at GND File: /media/a/hse/soc/hpc/lab_02/nn/nn.v Line: 7
+    Warning (13410): Pin "Snext[82]" is stuck at GND File: /media/a/hse/soc/hpc/lab_02/nn/nn.v Line: 7
+    Warning (13410): Pin "Snext[83]" is stuck at GND File: /media/a/hse/soc/hpc/lab_02/nn/nn.v Line: 7
+    Warning (13410): Pin "Snext[84]" is stuck at GND File: /media/a/hse/soc/hpc/lab_02/nn/nn.v Line: 7
+    Warning (13410): Pin "Snext[85]" is stuck at GND File: /media/a/hse/soc/hpc/lab_02/nn/nn.v Line: 7
+    Warning (13410): Pin "Snext[86]" is stuck at GND File: /media/a/hse/soc/hpc/lab_02/nn/nn.v Line: 7
+    Warning (13410): Pin "Snext[87]" is stuck at GND File: /media/a/hse/soc/hpc/lab_02/nn/nn.v Line: 7
+    Warning (13410): Pin "Snext[88]" is stuck at GND File: /media/a/hse/soc/hpc/lab_02/nn/nn.v Line: 7
+    Warning (13410): Pin "Snext[89]" is stuck at GND File: /media/a/hse/soc/hpc/lab_02/nn/nn.v Line: 7
+    Warning (13410): Pin "Snext[90]" is stuck at GND File: /media/a/hse/soc/hpc/lab_02/nn/nn.v Line: 7
+    Warning (13410): Pin "Snext[91]" is stuck at GND File: /media/a/hse/soc/hpc/lab_02/nn/nn.v Line: 7
+    Warning (13410): Pin "Snext[92]" is stuck at GND File: /media/a/hse/soc/hpc/lab_02/nn/nn.v Line: 7
+    Warning (13410): Pin "Snext[93]" is stuck at GND File: /media/a/hse/soc/hpc/lab_02/nn/nn.v Line: 7
+    Warning (13410): Pin "Snext[94]" is stuck at GND File: /media/a/hse/soc/hpc/lab_02/nn/nn.v Line: 7
+    Warning (13410): Pin "Snext[95]" is stuck at GND File: /media/a/hse/soc/hpc/lab_02/nn/nn.v Line: 7
+    Warning (13410): Pin "Snext[99]" is stuck at GND File: /media/a/hse/soc/hpc/lab_02/nn/nn.v Line: 7
+    Warning (13410): Pin "Snext[100]" is stuck at GND File: /media/a/hse/soc/hpc/lab_02/nn/nn.v Line: 7
+    Warning (13410): Pin "Snext[101]" is stuck at GND File: /media/a/hse/soc/hpc/lab_02/nn/nn.v Line: 7
+    Warning (13410): Pin "Snext[102]" is stuck at GND File: /media/a/hse/soc/hpc/lab_02/nn/nn.v Line: 7
+    Warning (13410): Pin "Snext[103]" is stuck at GND File: /media/a/hse/soc/hpc/lab_02/nn/nn.v Line: 7
+    Warning (13410): Pin "Snext[104]" is stuck at GND File: /media/a/hse/soc/hpc/lab_02/nn/nn.v Line: 7
+    Warning (13410): Pin "Snext[105]" is stuck at GND File: /media/a/hse/soc/hpc/lab_02/nn/nn.v Line: 7
+    Warning (13410): Pin "Snext[106]" is stuck at GND File: /media/a/hse/soc/hpc/lab_02/nn/nn.v Line: 7
+    Warning (13410): Pin "Snext[107]" is stuck at GND File: /media/a/hse/soc/hpc/lab_02/nn/nn.v Line: 7
+    Warning (13410): Pin "Snext[108]" is stuck at GND File: /media/a/hse/soc/hpc/lab_02/nn/nn.v Line: 7
+    Warning (13410): Pin "Snext[109]" is stuck at GND File: /media/a/hse/soc/hpc/lab_02/nn/nn.v Line: 7
+    Warning (13410): Pin "Snext[110]" is stuck at GND File: /media/a/hse/soc/hpc/lab_02/nn/nn.v Line: 7
+    Warning (13410): Pin "Snext[111]" is stuck at GND File: /media/a/hse/soc/hpc/lab_02/nn/nn.v Line: 7
+    Warning (13410): Pin "Snext[112]" is stuck at GND File: /media/a/hse/soc/hpc/lab_02/nn/nn.v Line: 7
+    Warning (13410): Pin "Snext[113]" is stuck at GND File: /media/a/hse/soc/hpc/lab_02/nn/nn.v Line: 7
+    Warning (13410): Pin "Snext[114]" is stuck at GND File: /media/a/hse/soc/hpc/lab_02/nn/nn.v Line: 7
+    Warning (13410): Pin "Snext[115]" is stuck at GND File: /media/a/hse/soc/hpc/lab_02/nn/nn.v Line: 7
+    Warning (13410): Pin "Snext[116]" is stuck at GND File: /media/a/hse/soc/hpc/lab_02/nn/nn.v Line: 7
+    Warning (13410): Pin "Snext[117]" is stuck at GND File: /media/a/hse/soc/hpc/lab_02/nn/nn.v Line: 7
+    Warning (13410): Pin "Snext[118]" is stuck at GND File: /media/a/hse/soc/hpc/lab_02/nn/nn.v Line: 7
+    Warning (13410): Pin "Snext[119]" is stuck at GND File: /media/a/hse/soc/hpc/lab_02/nn/nn.v Line: 7
+    Warning (13410): Pin "Snext[120]" is stuck at GND File: /media/a/hse/soc/hpc/lab_02/nn/nn.v Line: 7
+    Warning (13410): Pin "Snext[121]" is stuck at GND File: /media/a/hse/soc/hpc/lab_02/nn/nn.v Line: 7
+    Warning (13410): Pin "Snext[122]" is stuck at GND File: /media/a/hse/soc/hpc/lab_02/nn/nn.v Line: 7
+    Warning (13410): Pin "Snext[123]" is stuck at GND File: /media/a/hse/soc/hpc/lab_02/nn/nn.v Line: 7
+    Warning (13410): Pin "Snext[124]" is stuck at GND File: /media/a/hse/soc/hpc/lab_02/nn/nn.v Line: 7
+    Warning (13410): Pin "Snext[125]" is stuck at GND File: /media/a/hse/soc/hpc/lab_02/nn/nn.v Line: 7
+    Warning (13410): Pin "Snext[126]" is stuck at GND File: /media/a/hse/soc/hpc/lab_02/nn/nn.v Line: 7
+    Warning (13410): Pin "Snext[127]" is stuck at GND File: /media/a/hse/soc/hpc/lab_02/nn/nn.v Line: 7
+    Warning (13410): Pin "Snext_max[3]" is stuck at GND File: /media/a/hse/soc/hpc/lab_02/nn/nn.v Line: 8
+    Warning (13410): Pin "Snext_max[4]" is stuck at GND File: /media/a/hse/soc/hpc/lab_02/nn/nn.v Line: 8
+    Warning (13410): Pin "Snext_max[5]" is stuck at GND File: /media/a/hse/soc/hpc/lab_02/nn/nn.v Line: 8
+    Warning (13410): Pin "Snext_max[6]" is stuck at GND File: /media/a/hse/soc/hpc/lab_02/nn/nn.v Line: 8
+    Warning (13410): Pin "Snext_max[7]" is stuck at GND File: /media/a/hse/soc/hpc/lab_02/nn/nn.v Line: 8
+    Warning (13410): Pin "Snext_max[8]" is stuck at GND File: /media/a/hse/soc/hpc/lab_02/nn/nn.v Line: 8
+    Warning (13410): Pin "Snext_max[9]" is stuck at GND File: /media/a/hse/soc/hpc/lab_02/nn/nn.v Line: 8
+    Warning (13410): Pin "Snext_max[10]" is stuck at GND File: /media/a/hse/soc/hpc/lab_02/nn/nn.v Line: 8
+    Warning (13410): Pin "Snext_max[11]" is stuck at GND File: /media/a/hse/soc/hpc/lab_02/nn/nn.v Line: 8
+    Warning (13410): Pin "Snext_max[12]" is stuck at GND File: /media/a/hse/soc/hpc/lab_02/nn/nn.v Line: 8
+    Warning (13410): Pin "Snext_max[13]" is stuck at GND File: /media/a/hse/soc/hpc/lab_02/nn/nn.v Line: 8
+    Warning (13410): Pin "Snext_max[14]" is stuck at GND File: /media/a/hse/soc/hpc/lab_02/nn/nn.v Line: 8
+    Warning (13410): Pin "Snext_max[15]" is stuck at GND File: /media/a/hse/soc/hpc/lab_02/nn/nn.v Line: 8
+    Warning (13410): Pin "Snext_max[16]" is stuck at GND File: /media/a/hse/soc/hpc/lab_02/nn/nn.v Line: 8
+    Warning (13410): Pin "Snext_max[17]" is stuck at GND File: /media/a/hse/soc/hpc/lab_02/nn/nn.v Line: 8
+    Warning (13410): Pin "Snext_max[18]" is stuck at GND File: /media/a/hse/soc/hpc/lab_02/nn/nn.v Line: 8
+    Warning (13410): Pin "Snext_max[19]" is stuck at GND File: /media/a/hse/soc/hpc/lab_02/nn/nn.v Line: 8
+    Warning (13410): Pin "Snext_max[20]" is stuck at GND File: /media/a/hse/soc/hpc/lab_02/nn/nn.v Line: 8
+    Warning (13410): Pin "Snext_max[21]" is stuck at GND File: /media/a/hse/soc/hpc/lab_02/nn/nn.v Line: 8
+    Warning (13410): Pin "Snext_max[22]" is stuck at GND File: /media/a/hse/soc/hpc/lab_02/nn/nn.v Line: 8
+    Warning (13410): Pin "Snext_max[23]" is stuck at GND File: /media/a/hse/soc/hpc/lab_02/nn/nn.v Line: 8
+    Warning (13410): Pin "Snext_max[24]" is stuck at GND File: /media/a/hse/soc/hpc/lab_02/nn/nn.v Line: 8
+    Warning (13410): Pin "Snext_max[25]" is stuck at GND File: /media/a/hse/soc/hpc/lab_02/nn/nn.v Line: 8
+    Warning (13410): Pin "Snext_max[26]" is stuck at GND File: /media/a/hse/soc/hpc/lab_02/nn/nn.v Line: 8
+    Warning (13410): Pin "Snext_max[27]" is stuck at GND File: /media/a/hse/soc/hpc/lab_02/nn/nn.v Line: 8
+    Warning (13410): Pin "Snext_max[28]" is stuck at GND File: /media/a/hse/soc/hpc/lab_02/nn/nn.v Line: 8
+    Warning (13410): Pin "Snext_max[29]" is stuck at GND File: /media/a/hse/soc/hpc/lab_02/nn/nn.v Line: 8
+    Warning (13410): Pin "Snext_max[30]" is stuck at GND File: /media/a/hse/soc/hpc/lab_02/nn/nn.v Line: 8
+    Warning (13410): Pin "Snext_max[31]" is stuck at GND File: /media/a/hse/soc/hpc/lab_02/nn/nn.v Line: 8
+Info (286030): Timing-Driven Synthesis is running
+Info (144001): Generated suppressed messages file /media/a/hse/soc/hpc/lab_02/nn/output_files/nn.map.smsg
+Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
+    Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
+Info (21057): Implemented 658 device resources after synthesis - the final resource count might be different
+    Info (21058): Implemented 3 input pins
+    Info (21059): Implemented 165 output pins
+    Info (21061): Implemented 482 logic cells
+    Info (21062): Implemented 8 DSP elements
+Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 153 warnings
+    Info: Peak virtual memory: 560 megabytes
+    Info: Processing ended: Tue Nov  9 00:34:12 2021
+    Info: Elapsed time: 00:00:09
+    Info: Total CPU time (on all processors): 00:00:19
+
+
++------------------------------------------+
+; Analysis & Synthesis Suppressed Messages ;
++------------------------------------------+
+The suppressed messages can be found in /media/a/hse/soc/hpc/lab_02/nn/output_files/nn.map.smsg.
+
+

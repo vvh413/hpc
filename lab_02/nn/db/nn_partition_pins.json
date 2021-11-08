@@ -1,0 +1,101 @@
+{
+	"partitions" : [
+		{
+			"name" : "Top",
+			"pins" : [
+				{
+					"name" : "Snext[0]",
+					"strict" : false
+				},
+				{
+					"name" : "Snext[1]",
+					"strict" : false
+				},
+				{
+					"name" : "Snext[2]",
+					"strict" : false
+				},
+				{
+					"name" : "Snext[32]",
+					"strict" : false
+				},
+				{
+					"name" : "Snext[33]",
+					"strict" : false
+				},
+				{
+					"name" : "Snext[34]",
+					"strict" : false
+				},
+				{
+					"name" : "Snext[64]",
+					"strict" : false
+				},
+				{
+					"name" : "Snext[65]",
+					"strict" : false
+				},
+				{
+					"name" : "Snext[66]",
+					"strict" : false
+				},
+				{
+					"name" : "Snext[96]",
+					"strict" : false
+				},
+				{
+					"name" : "Snext[97]",
+					"strict" : false
+				},
+				{
+					"name" : "Snext[98]",
+					"strict" : false
+				},
+				{
+					"name" : "Snext_max[0]",
+					"strict" : false
+				},
+				{
+					"name" : "Snext_max[1]",
+					"strict" : false
+				},
+				{
+					"name" : "Snext_max[2]",
+					"strict" : false
+				},
+				{
+					"name" : "done",
+					"strict" : false
+				},
+				{
+					"name" : "result[0]",
+					"strict" : false
+				},
+				{
+					"name" : "result[1]",
+					"strict" : false
+				},
+				{
+					"name" : "result[2]",
+					"strict" : false
+				},
+				{
+					"name" : "result[3]",
+					"strict" : false
+				},
+				{
+					"name" : "clk",
+					"strict" : false
+				},
+				{
+					"name" : "rst_n",
+					"strict" : false
+				},
+				{
+					"name" : "en",
+					"strict" : false
+				}
+			]
+		}
+	]
+}
