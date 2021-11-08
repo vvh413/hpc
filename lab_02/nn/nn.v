@@ -11,11 +11,11 @@ module nn
 );
 //	 input [SIZE * N - 1 : 0] Scurr,
 //	 input [SIZE * N - 1 : 0] W,
-	reg [SIZE * N - 1 : 0] Scurr = {-32'd1, 32'd1, 32'd1};
+	reg [SIZE * N - 1 : 0] Scurr = {32'd1, -32'd1, 32'd1};
 	reg [SIZE * N * M - 1 : 0] W = {
-						{-32'b1, -32'b1,  32'd1},
 						{ 32'b1, -32'b1, -32'd1},
 						{-32'b1,  32'b1,  32'd1},
+						{-32'b1, -32'b1,  32'd1},
 						{ 32'b1, -32'b1,  32'd1}
 						};
 	
@@ -184,7 +184,8 @@ module argmax
 	 output reg [N-1:0] result,
     output done
 );
-
+	 
+	 reg [N-1:0] temp_result;
     reg [SIZE - 1 : 0] sum = 'b0;
     reg [SIZE * N - 1 : 0] Scurrreg = 'd0;
     reg [SIZE - 1 : 0] counter = 'd0;
@@ -193,7 +194,7 @@ module argmax
 	 reg saveReg = 'b0;
 
     integer index, i;
-
+	
     assign Snext = Snextreg;
     assign done = doneReg;
 
@@ -211,10 +212,11 @@ module argmax
 			if(en)
 			begin
 				doneReg <= 'b0;
-				if(counter === N)
+				if(counter === N+1)
 				begin
 					counter <= 'd0;
 					doneReg <= 'b1;
+					result <= temp_result;
 					Snextreg <= sum;
 				end
 				else if(counter === 'd0)
@@ -239,13 +241,16 @@ module argmax
 		else
 		begin
 			if (!counter) 
+			begin
 				sum = 0;
+				temp_result=0;
+			end
 			else
 				if (sum<= Scurrreg[SIZE-1:0])
 				begin	
 					sum=Scurrreg[SIZE-1:0];
-					result = {N{1'b0}};
-					result[counter-1] = 1'b1;
+					temp_result = {N{1'b0}};
+					temp_result[counter-1] = 1'b1;
 				end
 		end
     end

@@ -1,5 +1,5 @@
 EDA Netlist Writer report for nn
-Tue Nov  9 00:35:13 2021
+Tue Nov  9 01:34:03 2021
 Quartus Prime Version 20.1.0 Build 711 06/05/2020 SJ Lite Edition
 
 
@@ -37,7 +37,7 @@ https://fpgasoftware.intel.com/eula.
 +-------------------------------------------------------------------+
 ; EDA Netlist Writer Summary                                        ;
 +---------------------------+---------------------------------------+
-; EDA Netlist Writer Status ; Successful - Tue Nov  9 00:35:13 2021 ;
+; EDA Netlist Writer Status ; Successful - Tue Nov  9 01:34:03 2021 ;
 ; Revision Name             ; nn                                    ;
 ; Top-level Entity Name     ; nn                                    ;
 ; Family                    ; Cyclone V                             ;
@@ -95,13 +95,13 @@ Info: Running Quartus Prime EDA Netlist Writer
     Info: Intel and sold by Intel or its authorized distributors.  Please
     Info: refer to the applicable agreement for further details, at
     Info: https://fpgasoftware.intel.com/eula.
-    Info: Processing started: Tue Nov  9 00:35:12 2021
+    Info: Processing started: Tue Nov  9 01:34:02 2021
 Info: Command: quartus_eda --write_settings_files=off --simulation=on --functional=on --flatten_buses=off --tool=modelsim_oem --format=verilog --output_directory=/media/a/hse/soc/hpc/lab_02/nn/simulation/qsim/ nn -c nn
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 Info (204019): Generated file nn.vo in folder "/media/a/hse/soc/hpc/lab_02/nn/simulation/qsim//" for EDA simulation tool
 Info: Quartus Prime EDA Netlist Writer was successful. 0 errors, 1 warning
     Info: Peak virtual memory: 687 megabytes
-    Info: Processing ended: Tue Nov  9 00:35:13 2021
+    Info: Processing ended: Tue Nov  9 01:34:03 2021
     Info: Elapsed time: 00:00:01
     Info: Total CPU time (on all processors): 00:00:01
 
