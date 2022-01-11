@@ -1,0 +1,73 @@
+m255
+K4
+z2
+Z0 !s99 nomlopt
+R0
+R0
+R0
+R0
+R0
+!s11f vlog 2021.2 2021.04, Apr 14 2021
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+Z1 dC:/Users/Admin/Desktop/examples/systemverilog/dpi/fibonaccinew
+T_opt
+!s110 1641940029
+VHM[^kS;5@l8:klk:d`RE[0
+Z2 04 3 4 work top fast 0
+=1-b42e99e9ae19-61de043c-2f0-1890
+Z3 !s124 OEM10U1 
+Z4 o-quiet -auto_acc_if_foreign -work work
+Z5 tCvgOpt 0
+n@_opt
+Z6 OL;O;2021.2;73
+R1
+T_opt1
+!s110 1641940554
+V;2953z;5agEPL`>d@_jUb2
+R2
+=1-b42e99e9ae19-61de064a-293-12a0
+R3
+R4
+R5
+n@_opt1
+R6
+R1
+T_opt2
+!s110 1641940712
+V9BTeVKRd3B7ZLCn<kHc1X2
+R2
+=1-b42e99e9ae19-61de06e7-34f-3bf4
+R3
+R4
+R5
+n@_opt2
+R6
+vtop
+DXx6 sv_std 3 std 0 22 9oUSJO;AeEaW`l:M@^WG92
+!s110 1641940711
+!i10b 1
+!s100 <gn0oP]9Yn3HXY_=k=dMW0
+I3537hFE8XFYl`a6Ef;icE0
+S1
+R1
+w1641940539
+8fibonacci.v
+Ffibonacci.v
+!i122 0
+L0 15 63
+VDg1SIo80bB@j0V0VzS_@n1
+OL;L;2021.2;73
+r1
+!s85 0
+31
+!s108 1641940711.000000
+!s107 fibonacci.v|
+!s90 -reportprogress|300|-sv|-dpiheader|fibonacci.h|fibonacci.v|fibonacci.c|
+!i113 0
+o-sv -L mtiAvm -L mtiRnm -L mtiOvm -L mtiUvm -L mtiUPF -L infact
+R5

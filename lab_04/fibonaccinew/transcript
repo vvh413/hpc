@@ -1,0 +1,50 @@
+# //  Questa Intel Starter FPGA Edition-64
+# //  Version 2021.2 win64 Apr 14 2021
+# //
+# //  Copyright 1991-2021 Mentor Graphics Corporation
+# //  All Rights Reserved.
+# //
+# //  QuestaSim and its associated documentation contain trade
+# //  secrets and commercial or financial information that are the property of
+# //  Mentor Graphics Corporation and are privileged, confidential,
+# //  and exempt from disclosure under the Freedom of Information Act,
+# //  5 U.S.C. Section 552. Furthermore, this information
+# //  is prohibited from disclosure under the Trade Secrets Act,
+# //  18 U.S.C. Section 1905.
+# //
+# do run.do
+# ** Warning: (vdel-134) Unable to remove locked optimized design "_opt".  Locker is Admin@DESKTOP-MR0TNEU.
+# ** Warning: (vdel-134) Unable to remove locked optimized design "_opt1".  Locker is Admin@DESKTOP-MR0TNEU.
+# ** Warning: (vlib-34) Library already exists at "work".
+# Errors: 0, Warnings: 1
+# Questa Intel Starter FPGA Edition-64 vlog 2021.2 Compiler 2021.04 Apr 14 2021
+# Start time: 01:38:31 on Jan 12,2022
+# vlog -reportprogress 300 -sv -dpiheader fibonacci.h fibonacci.v fibonacci.c 
+# -- Compiling module top
+# 
+# Top level modules:
+# 	top
+# -- Compiling DPI/PLI C file fibonacci.c
+# End time: 01:38:31 on Jan 12,2022, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vsim -c top 
+# Start time: 01:38:31 on Jan 12,2022
+# ** Note: (vsim-3812) Design is being optimized...
+# Loading sv_std.std
+# Loading work.top(fast)
+# Loading C:/Users/Admin/AppData/Local/Temp\Admin@DESKTOP-MR0TNEU_dpi_15348\win64_gcc-7.4.0\vsim_auto_compile.dll
+# 
+# Simulation finished: DATA MISMATCHES = 0
+# 
+# ** Note: $finish    : fibonacci.v(62)
+#    Time: 46 us  Iteration: 1  Instance: /top
+# 1
+# Break at fibonacci.v line 62
+add wave -position end  sim:/top/results
+# ** Warning: (vsim-WLF-5000) WLF file currently in use: vsim.wlf
+#           File in use by: Admin  Hostname: DESKTOP-MR0TNEU  ProcessID: 6288
+#           Attempting to use alternate WLF file "./wlftqkwdqf".
+# ** Warning: (vsim-WLF-5001) Could not open WLF file: vsim.wlf
+#           Using alternate file: ./wlftqkwdqf
+# End time: 01:40:38 on Jan 12,2022, Elapsed time: 0:02:07
+# Errors: 0, Warnings: 2
